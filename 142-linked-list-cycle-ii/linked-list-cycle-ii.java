@@ -11,23 +11,23 @@
  */
 public class Solution {
     public ListNode detectCycle(ListNode head) {
+        ListNode fast=head;
         ListNode slow = head;
-        ListNode fast = head;
         while(fast!=null && fast.next!=null){
             slow = slow.next;
             fast = fast.next.next;
             if(slow==fast){
-                // fount the meeting point now we need to find the starting point of the cycle keep slow as the duplicate value  
-                ListNode startingPoint = head;
-                while(startingPoint!=slow){
+                // we found the cycle now we need to find the starting point of their meeting
+                ListNode startIndex = head;
+                while(startIndex!=slow){
+                    startIndex = startIndex.next;
                     slow = slow.next;
-                    startingPoint=startingPoint.next;
-
                 }
-                return startingPoint;
+                return startIndex;
+        
+
             }
         }
         return null;
-        
     }
 }
