@@ -1,14 +1,17 @@
 class Solution {
     public int majorityElement(int[] nums) {
-        int max=nums[0];
-        Map<Integer,Integer>eC = new HashMap<>();
+        int count=0;
+        int majority=0;
         for(int n:nums){
-            eC.put(n,eC.getOrDefault(n,0)+1);
-            if(eC.get(n)>eC.get(max)){
-                max=n;
+            if(count==0){
+                majority=n;
+            }
+            if(n==majority){
+                count++;
+            }else{
+                count--;
             }
         }
-        return max;
-        
+        return majority;
     }
 }
